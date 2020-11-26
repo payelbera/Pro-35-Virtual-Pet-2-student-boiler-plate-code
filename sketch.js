@@ -1,14 +1,12 @@
-//Create variables here
 var dog, dogImg,happyDogImg, database, foodS, foodStock;
-var feedBtn, addFoodBtn,fedTime, lastFed,foodObj // VP2
+var feedBtn, addFoodBtn,fedTime, lastFed,foodObj;
 
 function preload()
 {
-  //load images here
+ 
   dogImg = loadImage("images/dogImg.png")
   happyDogImg = loadImage("images/dogImg1.png")
-
-  
+ 
 }
 
 function setup() {
@@ -40,15 +38,16 @@ function draw() {
   foodObj.foodStock = foodS;
   //display foodObj
 
-  // read the value of FeedTime from DB and set up an .on listener
+  foodObj.foodStock = foodS;
+  foodObj.display();
+  database.ref('FeedTime').on("value",function(data){
+    lastFed = data.val();
+    showTime(lastFed);
+  });
     
-  // store the data in var lastFed = data.val();
-    
-  //call the showTime func and pass lastFed as parameter
-  
+ 
   // call addFoodBtn 's mousePressed and call getFoodStock() and addFood(foodS);;
     
-  
   //call feedBtn's mousePressed function and call getFoodStock(); and feedDog();
   
   drawSprites();
